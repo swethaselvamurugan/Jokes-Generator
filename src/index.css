@@ -1,68 +1,126 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
+  background-color: #1a2a4c;
+  color: white;
+}
 
-  background-color: #21232A;
+.app-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #0d1a2b, #1a2a4c, #0d1a2b, #1a2a4c);
+  background-size: 400% 400%;
+  animation: moveBackground 15s ease infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.input{
-  padding: 5px;
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
   border: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.input:focus{
-  outline: none;
-}
-
-.button{
-  padding: 5px;
-  background-color: #1060CB;
-  color: white;
-  border: none;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.x{
-  padding: 5px;
-  background-color: grey;
-  border-radius: 50%;
-  font-size: xx-small;
   cursor: pointer;
+  font-size: 24px;
 }
 
-.container{
-  background-color: white;
-  width: 300px;
-  height: 40px;
-  text-align: center;
+.app-header {
+  margin-top: 20px;
+  animation: fadeIn 3s ease;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  color: #e63946;
+}
+
+.quote {
+  font-size: 1.5rem;
+  color: #f1faee;
+  font-style: italic;
+}
+
+.container {
   display: flex;
-  justify-content: space-between;
-  border-radius: 10px;
+  align-items: center;
+  gap: 10px;
 }
 
-.outer{
+.search-container {
+  position: relative;
   display: flex;
-  justify-content: center;
 }
 
-.text{
-  width: 600px;
+.input {
+  padding: 10px 30px 10px 10px; 
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #222;
   color: white;
-  text-align: center;
+  width: 250px; 
+}
+
+.clear-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px; 
+  color: red;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d62c1a;
+}
+
+.joke-text {
+  font-size: 20px;
+  margin-top: 20px;
+  animation: fadeIn 2s ease;
+}
+
+.error-text {
+  color: red;
+}
+
+.available-categories {
+  font-size: 14px;
+  color: gray;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJokes, fetchCategories } from "./jokeSlice";
+import { XCircle } from "lucide-react";
+import "./index.css";
 
 function App() {
   const [category, setCategory] = useState('');
@@ -36,34 +38,43 @@ function App() {
   }
 
   return (
-    <>
+    <div className={`app-container`}>
+      <header className="app-header">
+        <h1>Welcome to the Joke Generator</h1>
+        <p className="quote">"Laughter is the best medicine!"</p>
+      </header>
+
       <div className="outer">
         <div className="container">
-          <input className="input" placeholder="Input search text" value={category} onChange={handleChange}></input>
-          {category && <p className="x" onClick={handleClear}>X</p>}
-          <button className="button" onClick={handleFetch}>Get {category? `from ${category}` : "Random"}</button>
+          <div className="search-container">
+            <input
+              className="input"
+              placeholder="Input search text"
+              value={category}
+              onChange={handleChange}
+            />
+            {category && <XCircle className="clear-icon" onClick={handleClear} />}
+          </div>
+          <button className="button" onClick={handleFetch}>
+            Get {category ? `from ${category}` : "Random"}
+          </button>
         </div>
       </div>
+
       <div className="text">
         {categories.includes(category) ? (
-          <p>{joke}😂</p>
+          <p className="joke-text">{joke} 😂</p>
         ) : (
           showCategories && (
             <>
-              <p style={{ color: 'red' }}>Error: No jokes for category\"{category}\"found.</p>
-              <p>
-                Available categories: {categories.join(", ") || "Loading categories..."}
-              </p>
+              <p className="error-text">Error: No jokes for category "{category}" found.</p>
+              <p className="available-categories">Available categories: {categories.join(", ") || "Loading categories..."}</p>
             </>
           )
         )}
       </div>
-    </>
+    </div>
   );
 }
 
 export default App;
-
-
-
-
