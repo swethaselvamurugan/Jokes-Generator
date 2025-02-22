@@ -27,7 +27,7 @@ function App() {
   }
 
   async function handleFetch() {
-    const trimmedCategory = category.trim();
+    const trimmedCategory = category.trim().toLowerCase();
     if (categories.includes(trimmedCategory)) {
       dispatch(fetchJokes(trimmedCategory));
       setShowCategories(false);
@@ -62,7 +62,7 @@ function App() {
       </div>
 
       <div className="text">
-        {categories.includes(category) ? (
+        {categories.includes(category.trim().toLowerCase()) ? (
           <p className="joke-text">{joke} 😂</p>
         ) : (
           showCategories && (

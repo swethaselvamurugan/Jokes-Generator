@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const fetchJokes = createAsyncThunk("jokes/jokecategory", async function (category) {
-    return axios.get(`https://api.chucknorris.io/jokes/random?/category=${category}`).then(function (result) {
+    return axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`).then(function (result) {
         console.log(result.data.value)
         return result.data.value
     })
@@ -31,7 +31,7 @@ const jokeSlice = createSlice({
                 console.log("Loading...")
             })
             .addCase(fetchJokes.fulfilled, function (state, action) {
-                state.joke = action.payload
+                state.joke = action.payload;
             })
             .addCase(fetchCategories.pending, function () {
                 console.log("Loading categories...")
